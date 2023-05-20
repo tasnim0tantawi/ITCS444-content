@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 3
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div style="display: flex; width: 100%">
+    <div style="width: 25%; height: 300px; background-color: grey; line-height: 150px;" class="ion-text-center" id="H" #H>H</div>
+    <div style="width: 25%; height: 300px; background-color: deepskyblue; line-height: 150px;" class="ion-text-center" id="O" #O>O</div>
+    <div style="width: 25%; height: 300px; background-color: grey; line-height: 150px;" class="ion-text-center" id="M" #M>M</div>
+    <div style="width: 25%; height: 300px; background-color: deepskyblue; line-height: 150px;" class="ion-text-center" id="E" #E>E</div>
+  </div>
+  <div #zone style="width: 100%; height: 300px; background-color: white; border-style: dashed; border-color: red; line-height: 300px;" class="ion-text-center">
+   <h2 style="color:black"> {{List2 | json}} </h2>
+  </div>
+
+  <div class="ion-text-center">
+    <ion-button color="success" expand="block" (click)="verify()">Verify</ion-button>
+  </div>
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 3</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+</ion-content>

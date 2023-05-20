@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-button fill="clear" slot="start" (click)="reset()">
+      Reset
+    </ion-button>
+    <ion-icon slot="end" [name]="loginForm.valid ? 'checkmark' : 'close'"></ion-icon>
+    <ion-title>
+      Tab 1
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 1</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <form [formGroup]="loginForm">
+  <ion-item color="medium">
+    1. Enter User Name
+  </ion-item>
+  <ion-item>
+    <ion-input formControlName="name" placeholder="User name here" [(ngModel)]="userName"></ion-input>
+  </ion-item>
+  <ion-item  *ngIf="loginForm.controls['name'].hasError('required') && loginForm.controls['name'].touched">
+    <p style="color:red">Sorry, field username is required!</p>
+  </ion-item>
+    <ion-item *ngIf="loginForm.controls['name'].hasError('pattern') && loginForm.controls['name'].touched">
+      <p style="color:red">Sorry,  username consists of digits and alphabets!</p>
+    </ion-item>
+    <ion-item *ngIf="loginForm.controls['name'].hasError('minlength') && loginForm.controls['name'].touched">
+      <p style="color:red">Sorry, min length is 3!</p>
+    </ion-item>
+  <ion-button  (click)="verify()">Verify</ion-button>
+
+  <ion-item color="medium">
+    2. Select shift
+  </ion-item>
+    <!-- checkboxes -->
+    <ion-item>
+    <ion-checkbox slot="start" [(ngModel)]="morning"  [ngModelOptions]="{standalone: true}"> </ion-checkbox>
+      <ion-label> Morning Shift </ion-label>
+    </ion-item>
+    <ion-item>
+    <ion-checkbox slot="start" [(ngModel)]="afternoon"  [ngModelOptions]="{standalone: true}"></ion-checkbox>
+    <ion-label> Afternoon Shift </ion-label>
+    </ion-item>
+    <ion-item>
+    <ion-checkbox slot="start" [(ngModel)]="night"  [ngModelOptions]="{standalone: true}">Night Shift</ion-checkbox>
+    <ion-label> Night Shift </ion-label>
+    </ion-item>
+
+    <ion-item color="medium" style="margin: 5% 0">
+   <ion-label style="margin-right: 2%"> 3. Quantity </ion-label>
+      <ion-icon name="caret-down" (click)="dec()"></ion-icon>
+      <p>{{quantity}}</p>
+      <ion-icon name="caret-up" (click)="inc()"></ion-icon>
+    </ion-item>
+    <ion-item color="medium">
+      4. Do you Approve?
+      <ion-toggle slot="end" [(ngModel)]="approve"  [ngModelOptions]="{standalone: true}"></ion-toggle>
+    </ion-item>
+    <ion-button color="success" (click)="insert()" [disabled]="!approve">Submit</ion-button>
+    <ion-button color="success" (click)="insert()">Submit Anyway</ion-button>
+
+
+
+  </form>
+
+</ion-content>
